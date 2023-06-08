@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .delete-form {
+      display: inline-block;
+    }
+
+    .delete-form button {
+      background-color: transparent;
+      color: #f44336;
+      border: none;
+      cursor: pointer;
+    }
+
+    .delete-form button:hover {
+      text-decoration: underline;
+    }
+
+    .edit-link {
+      color: #4285f4;
+      text-decoration: none;
+    }
+
+    .edit-link:hover {
+      text-decoration: underline;
+    }
+
+    .add-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #4285f4;
+      text-decoration: none;
+    }
+
+    .add-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Direcciones Personales</h1>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Teléfono de la Casa</th>
+        <th scope="col">Dirección de la Casa</th>
+        <th scope="col">Teléfono del Trabajo</th>
+        <th scope="col">Dirección del Trabajo</th>
+        <th scope="col">Correo Electrónico</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for persona in personas %}
+      <tr>
+        <td>{{ persona.Nombre }}</td>
+        <td>{{ persona.Apellidos }}</td>
+        <td>{{ persona.TelefonoCasa }}</td>
+        <td>{{ persona.DireccionCasa }}</td>
+        <td>{{ persona.TelefonoTrabajo }}</td>
+        <td>{{ persona.DireccionTrabajo }}</td>
+        <td>{{ persona.CorreoElectronico }}</td>
+        <td>
+          <form class="delete-form" action="/remove/{{ persona.CorreoElectronico }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta persona?')">
+            <button type="submit">Borrar</button>
+          </form>
+        </td>
+        <td>
+          <a class="edit-link" href="/edit/{{ persona.CorreoElectronico }}">Editar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="add-link" href="/add">Agregar un nuevo contacto</a>
+</body>
+</html>
