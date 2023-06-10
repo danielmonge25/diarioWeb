@@ -8,8 +8,11 @@ router.get('/add', (req, res) => {
   res.render('add.twig');
 });
 
-router.post('/remove/:correo', comentarioController.remove);
+router.post('/remove/:titulo', comentarioController.remove);
 
 router.post('/add', comentarioController.add);
+
+router.post('/login', comentarioController.login);
+
 
 module.exports = router;

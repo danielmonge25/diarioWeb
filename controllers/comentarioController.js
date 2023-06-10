@@ -47,9 +47,19 @@ const remove = async (req, res) => {
   }
 };
 
+const login = async (req, res) => {
+  try {
+    res.render('login.twig');
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error' });
+  }
+};
+
 module.exports = {
   getAll,
   add,
-  remove
+  remove,
+  login
 };
 
