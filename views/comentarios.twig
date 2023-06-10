@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    table {
+      margin: 20px auto;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    .delete-form {
+      display: inline-block;
+    }
+
+    .delete-form button {
+      background-color: transparent;
+      color: #f44336;
+      border: none;
+      cursor: pointer;
+    }
+
+    .delete-form button:hover {
+      text-decoration: underline;
+    }
+
+    .edit-link {
+      color: #4285f4;
+      text-decoration: none;
+    }
+
+    .edit-link:hover {
+      text-decoration: underline;
+    }
+
+    .add-link {
+      display: block;
+      margin-top: 20px;
+      text-align: center;
+      color: #4285f4;
+      text-decoration: none;
+    }
+
+    .add-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Comentarios</h1>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Fecha</th>
+        <th scope="col">Texto</th>
+        <th scope="col">Autor</th>
+        <th scope="col">Comentarios</th>
+        <th scope="col">Título</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comentario in comentarios %}
+      <tr>
+        <td>{{ comentario.Fecha }}</td>
+        <td>{{ comentario.Texto }}</td>
+        <td>{{ comentario.Autor }}</td>
+        <td>{{ comentario.Comentarios }}</td>
+        <td>{{ comentario.Titulo }}</td>
+        <td>
+          <form class="delete-form" action="/remove/{{ comentario.Titulo }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este comentario?')">
+            <button type="submit">Borrar</button>
+          </form>
+        </td>
+        <td>
+          <a class="edit-link" href="/edit/{{ comentario.Titulo }}">Editar</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <a class="add-link" href="/add">Agregar un nuevo comentario</a>
+</body>
+</html>

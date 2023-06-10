@@ -13,7 +13,7 @@ app.set('twig', Twig);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'twig');
 
-const Comentario = require('./models/comentarios');
+const Comentario = require('./models/comentario');
 
 app.use('/', comentarioRoutes);
 

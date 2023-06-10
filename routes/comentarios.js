@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const addressController  = require('../controllers/comentarioController');
+const comentarioController  = require('../controllers/comentarioController');
 
 router.get('/', comentarioController.getAll);
 

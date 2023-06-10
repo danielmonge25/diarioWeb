@@ -3,7 +3,7 @@ const Comentario = require('../models/comentario');
 const getAll = async (req, res) => {
   try {
     const comentarios = await Comentario.findAll({
-      attributes: ['Fecha', 'Texto', 'Autor', 'Comentarios', 'DireccionTrabajo', 'Titulo']
+      attributes: ['Fecha', 'Texto', 'Autor', 'Comentarios', 'Titulo']
     });
     res.render('comentarios.twig', { comentarios });
   } catch (error) {
