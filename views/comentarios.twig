@@ -20,8 +20,12 @@
     </div>
     <div class="top-bar-right">
       <ul class="menu">
-        <li><a class="add-link" href="/add">Agregar</a></li>
-        <li><a class="add-link" href="/login">Acceso</a></li>
+        {% if user %}
+          <li><a class="add-link" href="/add">Agregar</a></li>
+          <li><a href="/logout">Cerrar sesión</a></li>
+        {% else %}
+          <li><a class="add-link" href="/login">Acceso</a></li>
+        {% endif %}
       </ul>
     </div>
   </div>
@@ -34,6 +38,7 @@
   <section class="grid-container">
     <div class="grid-x grid-margin-x" id="content">
       <div class="medium-9 cell">
+        <!-- Blog posts loop -->
         {% for comentario in comentarios %}
         <article class="blog-post">
           <h3>{{ comentario.Titulo }} <small>{{ comentario.Fecha }}</small></h3>
@@ -42,9 +47,13 @@
             <ul class="menu simple">
               <li class="item"><a href="#">Autor: {{ comentario.Autor }}</a></li>
               <li class="item"><a href="#">Comentarios: {{ comentario.Comentarios }}</a></li>
-              <li class="item"><form class="delete-form" action="/remove/{{ comentario.Titulo }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta entrada?')">
-                <button class="delete-button" type="submit">Eliminar</button>
-              </form></li>
+              {% if user %}
+              <li class="item">
+                <form class="delete-form" action="/remove/{{ comentario.Titulo }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta entrada?')">
+                  <button class="delete-button" type="submit">Eliminar</button>
+                </form>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </article>
