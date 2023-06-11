@@ -1,4 +1,5 @@
 const Comentario = require('../models/comentario');
+const authController = require('../controllers/loginController');
 
 const getAll = async (req, res) => {
   try {
@@ -47,19 +48,14 @@ const remove = async (req, res) => {
   }
 };
 
-const login = async (req, res) => {
-  try {
-    res.render('login.twig');
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error' });
-  }
+const login = (req, res) => {
+  res.render('login.twig');
 };
 
 module.exports = {
   getAll,
   add,
   remove,
-  login
+  login: authController.login 
 };
 
