@@ -7,7 +7,7 @@ This is a blog project built with Express and Sequelize.
 1. Clone the repository:
 
 ```shell
-git clone <repository_url>
+git clone https://github.com/danielmonge25/diarioWeb.git
 ```
 
 2. Navigate to the project directory:
@@ -36,7 +36,7 @@ To start the application, use the following command:
 npm start
 ```
 
-The application will start running on \`http://localhost\` at an available port.
+The application will start running on \`http://localhost:\` at an available port.
 
 ## Debugging
 
