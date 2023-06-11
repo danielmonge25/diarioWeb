@@ -45,7 +45,7 @@
           <p>{{ comentario.Texto }}</p>
           <div class="callout">
             <ul class="menu simple">
-              <li class="item"><a href="#">Autor: {{ comentario.Autor }}</a></li>
+              <li class="item"><a href="/autor?autor={{ comentario.Autor }}">Autor: {{ comentario.Autor }}</a></li>
               <li class="item"><a href="#">Comentarios: {{ comentario.Comentarios }}</a></li>
               {% if user %}
               <li class="item">
@@ -68,12 +68,21 @@
             <li><a href="#">C#</a></li>
             <li><a href="#">Java</a></li>
           </ul>
+          <script>
+            function redirectToAutor() {
+              const autores = ['Jordan Frutos', 'Carlos Carvajal', 'Mauricio Guerrero', 'Karla Venegas'];
+              const randomIndex = Math.floor(Math.random() * autores.length);
+              const autor = autores[randomIndex];
+              window.location.href = '/autor?autor=' + autor;
+            }
+          </script>
+
           <h4>Autores</h4>
           <ul>
-            <li><a href="#">Sandra</a></li>
-            <li><a href="#">Jessica</a></li>
-            <li><a href="#">José</a></li>
-            <li><a href="#">Andrés</a></li>
+            <li><a href="#" onclick="redirectToAutor()">Jordan Frutos</a></li>
+            <li><a href="#" onclick="redirectToAutor()">Carlos Carvajal</a></li>
+            <li><a href="#" onclick="redirectToAutor()">Mauricio Guerrero</a></li>
+            <li><a href="#" onclick="redirectToAutor()">Karla Venegas</a></li>
           </ul>
         </div>
       </aside>

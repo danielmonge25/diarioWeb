@@ -6,6 +6,8 @@ const authController  = require('../controllers/loginController');
 
 router.get('/', comentarioController.getAll);
 
+router.get('/autor', comentarioController.getByAutor);
+
 router.get('/add', (req, res) => {
   res.render('add.twig');
 });
