@@ -2,8 +2,23 @@ const Comentario = require('../models/comentario');
 const authController = require('../controllers/loginController');
 
 const getAll = async (req, res) => {
+  const pageAsNumber = Number.parseInt(req.query.page)
+  const sizeAsNumber = Number.parseInt(req.query.size);
+
+  let page = 0;
+  if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0){
+    page = pageAsNumber;
+  }
+
+  let size = 5;
+  if(!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 10 ){
+      size = sizeAsNumber;
+  }
+
   try {
     const comentarios = await Comentario.findAll({
+      limit: 5,
+      offset: page * size,
       attributes: ['Fecha', 'Texto', 'Autor', 'Comentarios', 'Titulo']
     });
     res.render('comentarios.twig', { comentarios });
