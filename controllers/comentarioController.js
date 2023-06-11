@@ -33,7 +33,7 @@ const add = async (req, res) => {
 
 const remove = async (req, res) => {
   try {
-    const comentario = await Comentario.findByPk(req.params.Titulo);
+    const comentario = await Comentario.findByPk(req.params.titulo);
     if (!comentario) {
       return res.status(404).json({ error: 'Comentario no encontrado' });
     }

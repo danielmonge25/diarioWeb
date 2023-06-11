@@ -8,6 +8,10 @@ router.get('/add', (req, res) => {
   res.render('add.twig');
 });
 
+router.get('/login', (req, res) => {
+  res.render('login.twig');
+});
+
 router.post('/remove/:titulo', comentarioController.remove);
 
 router.post('/add', comentarioController.add);
