@@ -3,10 +3,11 @@ const router = express.Router();
 const comentarioController  = require('../controllers/comentarioController');
 const authController  = require('../controllers/loginController');
 
-
 router.get('/', comentarioController.getAll);
 
 router.get('/autor', comentarioController.getByAutor);
+
+router.get('/publications/:title', comentarioController.getPublication);
 
 router.get('/add', (req, res) => {
   res.render('add.twig');

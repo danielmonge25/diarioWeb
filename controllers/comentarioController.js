@@ -64,6 +64,23 @@ const getByAutor = async (req, res) => {
 };
 
 
+
+const getPublication = async (req, res) => {
+  const publicationTitle = req.params.title;
+
+  try {
+    const publication = await Comentario.findOne({
+      where: { Titulo: publicationTitle },
+      attributes: ['Fecha', 'Texto', 'Autor', 'Comentarios', 'Titulo'],
+    });
+
+    res.render('publication.twig', { publication });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener la publicación' });
+  }
+};
+
 const add = async (req, res) => {
   try {
     const nuevoComentario = {
@@ -106,6 +123,7 @@ const login = (req, res) => {
 module.exports = {
   getAll,
   getByAutor,
+  getPublication,
   add,
   remove,
   login: authController.login 

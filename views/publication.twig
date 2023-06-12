@@ -1,0 +1,75 @@
+
+
+<!DOCTYPE html>
+<html class="no-js" lang="es">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agregar Comentario | Diario Web</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.2.3/motion-ui.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation-prototype.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<!-- Start Top Bar -->
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="menu-text">Grupo Bryan y Daniel</li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      {% if user %}
+        <li><a class="add-link" href="/add">Agregar</a></li>
+        <li><a href="/logout">Cerrar sesión</a></li>
+      {% else %}
+        <li><a class="add-link" href="/login">Acceso</a></li>
+      {% endif %}
+    </ul>
+  </div>
+</div>
+<!-- End Top Bar -->
+<div class="callout large primary">
+  <div class="text-center">
+    <h1>Agregar Comentario</h1>
+  </div>
+</div>
+<section class="grid-container">
+
+  <div class="grid-x grid-margin-x" id="content">
+    <div class="medium-9 cell">
+      <h1>{{ publication.Titulo }}</h1>
+        <p>{{ publication.Texto }}</p>
+        <!-- Rest of the code -->
+    </div>
+
+    <aside class="medium-3 cell" data-sticky-container="">
+      <div class="sticky" data-sticky="" data-anchor="content">
+        <h4>Categorías</h4>
+        <ul>
+          <li><a href="#">PHP</a></li>
+          <li><a href="#">JavaScript</a></li>
+          <li><a href="#">C#</a></li>
+          <li><a href="#">Java</a></li>
+        </ul>
+        <h4>Autores</h4>
+        <ul>
+          <li><a href="#">John Doe</a></li>
+          <li><a href="#">Jane Smith</a></li>
+          <li><a href="#">Bob Johnson</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/what-input/2.1.1/what-input.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/js/foundation.min.js"></script>
+<script>
+  $(document).foundation();
+</script>
+</body>
+</html>

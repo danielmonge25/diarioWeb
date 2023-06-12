@@ -41,8 +41,14 @@
         <!-- Blog posts loop -->
         {% for comentario in comentarios %}
         <article class="blog-post">
+
           <h3>{{ comentario.Titulo }} <small>{{ comentario.Fecha }}</small></h3>
-          <p>{{ comentario.Texto }}</p>
+          {% if comentario.Texto|length > 300 %}
+            <p>{{ comentario.Texto|slice(0, 300) }}... <a href="/publications/{{ comentario.Titulo }}">Read more</a></p>
+          {% else %}
+            <p>{{ comentario.Texto }}</p>
+          {% endif %}
+ 
           <div class="callout">
             <ul class="menu simple">
               <li class="item"><a href="/autor?autor={{ comentario.Autor }}">Autor: {{ comentario.Autor }}</a></li>
