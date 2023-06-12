@@ -2,26 +2,30 @@ const Comentario = require('../models/comentario');
 const authController = require('../controllers/loginController');
 
 const getAll = async (req, res) => {
-  const pageAsNumber = Number.parseInt(req.query.page)
+  const pageAsNumber = Number.parseInt(req.query.page);
   const sizeAsNumber = Number.parseInt(req.query.size);
 
   let page = 0;
-  if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0){
+  if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
     page = pageAsNumber;
   }
 
   let size = 5;
-  if(!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 10 ){
-      size = sizeAsNumber;
+  if (!Number.isNaN(sizeAsNumber) && sizeAsNumber > 0 && sizeAsNumber < 10) {
+    size = sizeAsNumber;
   }
 
   try {
+    const totalCount = await Comentario.count();
+    const totalPages = Math.ceil(totalCount / size);
+
     const comentarios = await Comentario.findAll({
-      limit: 5,
+      limit: size,
       offset: page * size,
-      attributes: ['Fecha', 'Texto', 'Autor', 'Comentarios', 'Titulo']
+      attributes: ['Fecha', 'Texto', 'Autor', 'Comentarios', 'Titulo'],
     });
-    res.render('comentarios.twig', { comentarios });
+
+    res.render('comentarios.twig', { comentarios, page, size, totalPages });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error al obtener los comentarios' });

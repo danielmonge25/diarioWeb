@@ -58,6 +58,7 @@
           </div>
         </article>
         {% endfor %}
+
       </div>
       <aside class="medium-3 cell" data-sticky-container="">
         <div class="sticky" data-sticky="" data-anchor="content">
@@ -87,19 +88,31 @@
         </div>
       </aside>
     </div>
-    <div class="grid-x cell">
-      <ul class="pagination" role="navigation" aria-label="Pagination">
+    {% if comentarios|length > 0 %}
+  <div class="grid-x cell">
+    <ul class="pagination" role="navigation" aria-label="Pagination">
+      {% if page > 0 %}
+        <li><a href="/?page={{ page - 1 }}&size={{ size }}" aria-label="Previous page">Previa</a></li>
+      {% else %}
         <li class="disabled">Previa</li>
-        <li><a href="/?page=0" aria-label="Page 1">1</a></li>
-        <li><a href="/?page=1" aria-label="Page 2">2</a></li>
-        <li><a href="/?page=2" aria-label="Page 3">3</a></li>
-        <li><a href="/?page=3" aria-label="Page 4">4</a></li>
-        <li class="ellipsis"><br></li>
-        <li><a href="#" aria-label="Page 12">12</a></li>
-        <li><a href="#" aria-label="Page 13">13</a></li>
-        <li><a href="#" aria-label="Next page">Siguiente</a></li>
-      </ul>
-    </div>
+      {% endif %}
+      {% for i in 0..totalPages-1 %}
+        {% if i == page %}
+          <li class="current"><span>{{ i+1 }}</span></li>
+        {% else %}
+          <li><a href="/?page={{ i }}&size={{ size }}" aria-label="Page {{ i+1 }}">{{ i+1 }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if page < totalPages-1 %}
+        <li><a href="/?page={{ page + 1 }}&size={{ size }}" aria-label="Next page">Siguiente</a></li>
+      {% else %}
+        <li class="disabled">Siguiente</li>
+      {% endif %}
+    </ul>
+  </div>
+
+{% endif %}
+
   </section>
   <script src="bower_components/jquery/dist/jquery.js?hash=4d87a332421d7631f5e204529a472bff"></script>
   <script src="bower_components/what-input/what-input.js?hash=af041c30741a345292bed3cb0f1295ca"></script>
