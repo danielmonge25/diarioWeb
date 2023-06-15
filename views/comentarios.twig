@@ -76,21 +76,18 @@
             <li><a href="#">Java</a></li>
           </ul>
           <script>
-            function redirectToAutor() {
-              const autores = ['Jordan Frutos', 'Carlos Carvajal', 'Mauricio Guerrero', 'Karla Venegas'];
-              const randomIndex = Math.floor(Math.random() * autores.length);
-              const autor = autores[randomIndex];
+            function redirectToAutor(autor) {
               window.location.href = '/autor?autor=' + autor;
             }
-          </script>
+            </script>
 
-          <h4>Autores</h4>
-          <ul>
-            <li><a href="#" onclick="redirectToAutor()">Jordan Frutos</a></li>
-            <li><a href="#" onclick="redirectToAutor()">Carlos Carvajal</a></li>
-            <li><a href="#" onclick="redirectToAutor()">Mauricio Guerrero</a></li>
-            <li><a href="#" onclick="redirectToAutor()">Karla Venegas</a></li>
-          </ul>
+            <h4>Autores</h4>
+            <ul>
+              <li><a href="#" onclick="redirectToAutor('Jordan Frutos')">Jordan Frutos</a></li>
+              <li><a href="#" onclick="redirectToAutor('Carlos Carvajal')">Carlos Carvajal</a></li>
+              <li><a href="#" onclick="redirectToAutor('Mauricio Guerrero')">Mauricio Guerrero</a></li>
+              <li><a href="#" onclick="redirectToAutor('Karla Venegas')">Karla Venegas</a></li>
+            </ul>
         </div>
       </aside>
     </div>
