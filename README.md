@@ -13,7 +13,7 @@ git clone https://github.com/danielmonge25/diarioWeb.git
 2. Navigate to the project directory:
 
 ```shell
-cd blog
+cd diarioWeb
 ```
 
 3. Install the dependencies:
